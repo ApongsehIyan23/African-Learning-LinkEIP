@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { checkSupabaseConnection } from '../lib/supabaseClient'
 
 function StatusBadge({ state }) {
@@ -42,9 +43,17 @@ export default function Home() {
           African Learning Link
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600 sm:text-base">
-          The foundation is live: React + Vite + Tailwind, routing, and the Supabase
-          client wired from environment variables. Features arrive in the next phases.
+          A pan-African e-learning and mentorship platform. Sign in to reach your
+          workspace — opportunities for students, the verification queue for staff.
         </p>
+        <div className="mt-6">
+          <Link
+            to="/login"
+            className="inline-block rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700"
+          >
+            Sign in
+          </Link>
+        </div>
       </div>
 
       <div className="mt-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
