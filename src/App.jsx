@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Verification from './pages/Verification'
 import Placeholder from './pages/Placeholder'
 import NotFound from './pages/NotFound'
 import Spinner from './components/Spinner'
@@ -40,10 +41,7 @@ export default function App() {
           path="/verification"
           element={
             <RequireRole allow={ROUTE_ACCESS['/verification']}>
-              <Placeholder
-                title="Verification Queue"
-                description="The opportunity lifecycle — eight states, six criteria, and the two-step publish gate. Built in Phase 2."
-              />
+              <Verification />
             </RequireRole>
           }
         />
