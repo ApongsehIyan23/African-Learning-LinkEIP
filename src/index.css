@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Phase 0 base. The full brand design system is produced by the separate
+   design prompt (ALL_MVP_DESIGN_PROMPT.md) and will replace these neutrals. */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}

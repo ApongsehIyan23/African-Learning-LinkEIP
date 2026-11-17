@@ -1,0 +1,35 @@
+{
+  "name": "african-learning-linkeip",
+  "version": "1.0.0",
+  "description": "African Learning Link (ALL) — pan-African e-learning and mentorship platform MVP.",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApongsehIyan23/African-Learning-LinkEIP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ApongsehIyan23/African-Learning-LinkEIP/issues"
+  },
+  "homepage": "https://github.com/ApongsehIyan23/African-Learning-LinkEIP#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "vite": "^8.3.8"
+  }
+}
