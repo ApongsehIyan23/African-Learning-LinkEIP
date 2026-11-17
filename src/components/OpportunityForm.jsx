@@ -12,7 +12,7 @@ const EMPTY = {
   geo_restrictions: '',
 }
 
-const field = 'mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200'
+const field = 'mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200'
 const label = 'block text-sm font-medium text-slate-700'
 
 export default function OpportunityForm({ initial, title = 'Log a new opportunity', onSubmit, onClose }) {
@@ -98,7 +98,7 @@ export default function OpportunityForm({ initial, title = 'Log a new opportunit
             <button type="button" onClick={onClose} className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
               Cancel
             </button>
-            <button type="submit" disabled={busy} className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60">
+            <button type="submit" disabled={busy} className="rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-60">
               {busy ? 'Saving…' : 'Save'}
             </button>
           </div>

@@ -36,7 +36,7 @@ const ACTION_LABEL = {
 
 function actionClass(key) {
   if (key === 'approve' || key === 'publish')
-    return 'bg-indigo-600 text-white hover:bg-indigo-700'
+    return 'bg-brand-600 text-white hover:bg-brand-700'
   if (key === 'reject') return 'bg-rose-600 text-white hover:bg-rose-700'
   return 'border border-slate-300 text-slate-700 hover:bg-slate-100'
 }
@@ -51,7 +51,7 @@ function Field({ label, value, link }) {
       <dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">{label}</dt>
       <dd className="mt-0.5 text-sm text-slate-800 break-words">
         {link && value ? (
-          <a href={value} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">
+          <a href={value} target="_blank" rel="noreferrer" className="text-brand-600 underline break-all">
             {value}
           </a>
         ) : (
@@ -109,7 +109,7 @@ function CriterionRow({ c, row, editable, onSave }) {
             value={note}
             onChange={(e) => setNote(e.target.value)}
             placeholder="Note (optional)"
-            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200"
           />
           <div className="flex justify-end">
             <button
@@ -153,7 +153,7 @@ function ReasonModal({ title, confirmLabel, onConfirm, onClose }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="This is required and recorded in the activity log."
-          className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200"
         />
         {error && <p className="mt-2 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>}
         <div className="mt-4 flex justify-end gap-2">
@@ -251,7 +251,7 @@ export default function OpportunityDrawer({ oppId, role, userId, onClose, onChan
               <p className="text-sm text-slate-500">
                 {opp.provider} · {TYPE_LABEL[opp.type]}
                 {opp.source_method === 'ai_agent' && (
-                  <span className="ml-2 rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">AI-sourced</span>
+                  <span className="ml-2 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">AI-sourced</span>
                 )}
               </p>
             )}

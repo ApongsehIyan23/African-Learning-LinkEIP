@@ -1,13 +1,159 @@
 @import "tailwindcss";
 
-/* Phase 0 base. The full brand design system is produced by the separate
-   design prompt (ALL_MVP_DESIGN_PROMPT.md) and will replace these neutrals. */
+/* =============================================================================
+   African Learning Link — design system (Step 3)
+   Anchored on the logo ink #7100CA. All pairings below meet WCAG AA.
+   Tailwind v4 is config-less: tokens live here in @theme and become utilities
+   (bg-brand-600, text-ink, border-border, rounded-card, shadow-card, …).
+   ========================================================================== */
+
+@theme {
+  /* ---- Brand: 600 = logo #7100CA (confirmed) ---------------------------- */
+  --color-brand-50: #f7ecfe;
+  --color-brand-100: #ecd6fc;
+  --color-brand-200: #d9adf9;
+  --color-brand-300: #c184f3;
+  --color-brand-400: #a24fe8; /* focus ring */
+  --color-brand-500: #8a1bd6;
+  --color-brand-600: #7100ca; /* PRIMARY — logo ink */
+  --color-brand-700: #5c00a3; /* hover / link text */
+  --color-brand-800: #49007f; /* active / pressed */
+  --color-brand-900: #3a0064;
+  --color-brand-950: #26003f;
+
+  /* ---- Semantic (AA-verified in Step 1) --------------------------------- */
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-700: #b45309;
+
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+
+  --color-info-50: #f0f9ff;
+  --color-info-100: #e0f2fe;
+  --color-info-600: #0284c7;
+  --color-info-700: #0369a1;
+
+  /* ---- Semantic surfaces & ink (mapped from slate) ---------------------- */
+  --color-app: #f8fafc; /* page background */
+  --color-surface: #ffffff; /* cards, sidebar, drawer */
+  --color-surface-2: #f8fafc; /* subtle fills, zebra rows */
+  --color-border: #e2e8f0; /* hairline */
+  --color-border-strong: #cbd5e1;
+  --color-ink: #0f172a; /* primary text — 17.9:1 */
+  --color-ink-muted: #475569; /* secondary    — 7.6:1  */
+  --color-ink-subtle: #64748b; /* tertiary     — 4.8:1  */
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-btn: 0.625rem; /* 10px */
+  --radius-card: 1rem; /* 16px */
+
+  /* ---- Elevation (soft, low-contrast) ----------------------------------- */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+  --shadow-pop: 0 8px 24px rgb(15 23 42 / 0.1);
+
+  /* ---- Type ------------------------------------------------------------- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Base ---------------------------------------------------------------- */
 html {
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+  background-color: var(--color-app);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tabular figures for metrics / counts */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shared focus-visible ring for interactive elements */
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-brand-400);
+  border-radius: var(--radius-btn);
+}
+
+/* ---- Form primitives (reused by forms, filters, modals) ----------------- */
+.field {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-ink);
+  outline: none;
+}
+.field::placeholder {
+  color: var(--color-ink-subtle);
+}
+.field:focus {
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 3px var(--color-brand-100);
+}
+.field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Skeleton (loading state — modeled on the grayscale inspo8) --------- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  border-radius: 0.5rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.65),
+    transparent
+  );
+  animation: all-shimmer 1.4s infinite;
+}
+@keyframes all-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
 }

@@ -31,7 +31,7 @@ export default function Login() {
   return (
     <div className="mx-auto max-w-md">
       <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
           African Learning Link
         </p>
         <h1 className="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl">Sign in</h1>
@@ -68,7 +68,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200"
               />
             </div>
 
@@ -81,7 +81,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-md bg-brand-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'sending' ? 'Sending link…' : 'Send magic link'}
             </button>

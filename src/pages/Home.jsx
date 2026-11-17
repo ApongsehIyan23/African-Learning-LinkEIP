@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-3xl">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
           Phase 0 · Foundation
         </p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="mt-6">
           <Link
             to="/login"
-            className="inline-block rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700"
+            className="inline-block rounded-md bg-brand-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-700"
           >
             Sign in
           </Link>

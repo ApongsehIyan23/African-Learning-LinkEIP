@@ -25,13 +25,25 @@ export const STATUS_LABEL = {
 
 export const STATUS_BADGE = {
   received: 'bg-slate-100 text-slate-700 border-slate-200',
-  under_review: 'bg-sky-100 text-sky-800 border-sky-200',
-  verification_in_progress: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-  awaiting_information: 'bg-amber-100 text-amber-800 border-amber-200',
-  approved_for_publication: 'bg-violet-100 text-violet-800 border-violet-200',
-  published: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-  rejected: 'bg-rose-100 text-rose-800 border-rose-200',
-  expired_closed: 'bg-stone-200 text-stone-700 border-stone-300',
+  under_review: 'bg-info-50 text-info-700 border-info-100',
+  verification_in_progress: 'bg-brand-100 text-brand-700 border-brand-200',
+  awaiting_information: 'bg-warning-50 text-warning-700 border-warning-100',
+  approved_for_publication: 'bg-brand-50 text-brand-800 border-brand-100',
+  published: 'bg-success-50 text-success-700 border-success-100',
+  rejected: 'bg-error-50 text-error-700 border-error-100',
+  expired_closed: 'bg-slate-200 text-slate-600 border-slate-300',
+}
+
+// Leading icon per status so state never relies on colour alone (colourblind-safe).
+export const STATUS_ICON = {
+  received: 'inbox',
+  under_review: 'eye',
+  verification_in_progress: 'shieldCheck',
+  awaiting_information: 'clock',
+  approved_for_publication: 'badgeCheck',
+  published: 'globe',
+  rejected: 'xCircle',
+  expired_closed: 'archive',
 }
 
 // ---- Types (§8.2) ----------------------------------------------------------
@@ -59,9 +71,9 @@ export const CORE_CRITERIA = CRITERIA.filter((c) => c.key !== 'paid_scrutiny').m
 export const RESULT_LABEL = { unchecked: 'Unchecked', pass: 'Pass', flag: 'Flag', fail: 'Fail' }
 export const RESULT_BADGE = {
   unchecked: 'bg-slate-100 text-slate-500 border-slate-200',
-  pass: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-  flag: 'bg-amber-100 text-amber-700 border-amber-200',
-  fail: 'bg-rose-100 text-rose-700 border-rose-200',
+  pass: 'bg-success-50 text-success-700 border-success-100',
+  flag: 'bg-warning-50 text-warning-700 border-warning-100',
+  fail: 'bg-error-50 text-error-700 border-error-100',
 }
 
 // ---- Queries ---------------------------------------------------------------
