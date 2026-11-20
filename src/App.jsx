@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Verification from './pages/Verification'
 import Opportunities from './pages/Opportunities'
+import Matching from './pages/Matching'
+import Mentorship from './pages/Mentorship'
 import Placeholder from './pages/Placeholder'
 import NotFound from './pages/NotFound'
 import Spinner from './components/Spinner'
@@ -50,10 +52,15 @@ export default function App() {
           path="/matching"
           element={
             <RequireRole allow={ROUTE_ACCESS['/matching']}>
-              <Placeholder
-                title="Mentor Matching"
-                description="Profiles, weighted six-criteria scoring, and the accept / decline / confirm flow. Built in Phase 4."
-              />
+              <Matching />
+            </RequireRole>
+          }
+        />
+        <Route
+          path="/mentorship"
+          element={
+            <RequireRole allow={ROUTE_ACCESS['/mentorship']}>
+              <Mentorship />
             </RequireRole>
           }
         />

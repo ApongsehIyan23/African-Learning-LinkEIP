@@ -31,7 +31,7 @@ export const ROLE_HOME = {
   verification_lead: '/dashboard',
   submitter: '/verification',
   student_mentee: '/opportunities',
-  mentor: '/opportunities',
+  mentor: '/mentorship',
 }
 
 // Which roles may reach each protected route.
@@ -39,7 +39,8 @@ export const ROUTE_ACCESS = {
   '/dashboard': ['super_admin', 'verification_lead'],
   '/verification': ['super_admin', 'verification_lead', 'submitter'],
   '/matching': ['super_admin', 'verification_lead'],
-  '/opportunities': ['super_admin', 'verification_lead', 'submitter', 'student_mentee', 'mentor'],
+  '/mentorship': ['student_mentee', 'mentor', 'super_admin'],
+  '/opportunities': ['super_admin', 'verification_lead', 'submitter', 'student_mentee'],
 }
 
 // Nav links (rendered only for routes the current role can access).
@@ -47,6 +48,7 @@ export const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
   { to: '/verification', label: 'Verification Queue', icon: 'listChecks' },
   { to: '/matching', label: 'Mentor Matching', icon: 'users' },
+  { to: '/mentorship', label: 'Mentorship', icon: 'userPlus' },
   { to: '/opportunities', label: 'Opportunities', icon: 'compass' },
 ]
 
