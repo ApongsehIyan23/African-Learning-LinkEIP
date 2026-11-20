@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Verification from './pages/Verification'
+import Opportunities from './pages/Opportunities'
 import Placeholder from './pages/Placeholder'
 import NotFound from './pages/NotFound'
 import Spinner from './components/Spinner'
@@ -60,10 +61,7 @@ export default function App() {
           path="/opportunities"
           element={
             <RequireRole allow={ROUTE_ACCESS['/opportunities']}>
-              <Placeholder
-                title="Opportunities"
-                description="The student-facing listing of published opportunities, with search and filtering. Built in Phase 3."
-              />
+              <Opportunities />
             </RequireRole>
           }
         />

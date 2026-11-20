@@ -89,6 +89,22 @@ export async function listOpportunities() {
   return data ?? []
 }
 
+// Phase 3 — student-facing listing. Selects only the public-safe columns of
+// PUBLISHED opportunities. RLS (0002 opportunities_select_published) guarantees a
+// non-staff user can read nothing else, even with a crafted request.
+const PUBLIC_SELECT =
+  'id, title, provider, type, deadline, geo_restrictions, summary, eligibility, application_link, source_link, publication_date'
+
+export async function listPublishedOpportunities() {
+  const { data, error } = await supabase
+    .from('opportunities')
+    .select(PUBLIC_SELECT)
+    .eq('current_status', 'published')
+    .order('publication_date', { ascending: false, nullsFirst: false })
+  if (error) throw error
+  return data ?? []
+}
+
 export async function getOpportunity(id) {
   const [oppRes, critRes, actRes] = await Promise.all([
     supabase.from('opportunities').select(OPP_SELECT).eq('id', id).single(),
