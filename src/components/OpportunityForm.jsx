@@ -7,6 +7,7 @@ const EMPTY = {
   type: 'scholarship',
   source_link: '',
   deadline: '',
+  summary: '',
   eligibility: '',
   application_link: '',
   geo_restrictions: '',
@@ -78,8 +79,12 @@ export default function OpportunityForm({ initial, title = 'Log a new opportunit
             </div>
           </div>
           <div>
+            <label className={label}>Summary</label>
+            <textarea className={field} rows={3} value={form.summary ?? ''} onChange={set('summary')} placeholder="What the opportunity is and what it offers." />
+          </div>
+          <div>
             <label className={label}>Eligibility</label>
-            <textarea className={field} rows={2} value={form.eligibility ?? ''} onChange={set('eligibility')} />
+            <textarea className={field} rows={2} value={form.eligibility ?? ''} onChange={set('eligibility')} placeholder="Who can apply — nationality, level, field, requirements." />
           </div>
           <div>
             <label className={label}>Source link</label>

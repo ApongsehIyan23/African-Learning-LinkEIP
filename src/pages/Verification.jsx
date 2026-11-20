@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext'
 import StatusBadge from '../components/StatusBadge'
 import OpportunityForm from '../components/OpportunityForm'
 import OpportunityDrawer from '../components/OpportunityDrawer'
+import AiDiscovery from '../components/AiDiscovery'
 import Button from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
 import Card from '../components/ui/Card'
@@ -43,6 +44,8 @@ export default function Verification() {
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
   const [showForm, setShowForm] = useState(false)
+  const [showAi, setShowAi] = useState(false)
+  const [notice, setNotice] = useState('')
   const [openId, setOpenId] = useState(null)
 
   const canCreate = role === 'submitter' || role === 'super_admin'
@@ -100,11 +103,22 @@ export default function Verification() {
           </p>
         </div>
         {canCreate && (
-          <Button icon="plus" onClick={() => setShowForm(true)} className="shrink-0">
-            Log opportunity
-          </Button>
+          <div className="flex shrink-0 gap-2">
+            <Button variant="secondary" icon="sparkles" onClick={() => setShowAi(true)}>
+              Find with AI
+            </Button>
+            <Button icon="plus" onClick={() => setShowForm(true)}>
+              Log opportunity
+            </Button>
+          </div>
         )}
       </div>
+
+      {notice && (
+        <p className="mt-4 rounded-btn border border-success-100 bg-success-50 px-3 py-2 text-sm text-success-700">
+          {notice}
+        </p>
+      )}
 
       {error && (
         <p className="mt-4 rounded-btn border border-error-100 bg-error-50 px-3 py-2 text-sm text-error-700">
@@ -230,6 +244,20 @@ export default function Verification() {
           onSubmit={async (fields) => {
             await createOpportunity(fields, user.id)
             setShowForm(false)
+            await refresh()
+          }}
+        />
+      )}
+
+      {showAi && (
+        <AiDiscovery
+          userId={user.id}
+          onClose={() => setShowAi(false)}
+          onConfirmed={async (count) => {
+            setShowAi(false)
+            setNotice(
+              `${count} AI-sourced opportunit${count === 1 ? 'y' : 'ies'} added to the queue at Received.`,
+            )
             await refresh()
           }}
         />

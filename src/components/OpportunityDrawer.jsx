@@ -305,6 +305,11 @@ export default function OpportunityDrawer({ oppId, role, userId, onClose, onChan
               <Field label="Application link" value={opp.application_link} link />
               {opp.publication_date && <Field label="Publication date" value={opp.publication_date} />}
             </dl>
+            {opp.summary && (
+              <div className="mt-4">
+                <Field label="Summary" value={opp.summary} />
+              </div>
+            )}
             {opp.eligibility && (
               <div className="mt-4">
                 <Field label="Eligibility" value={opp.eligibility} />
@@ -383,6 +388,7 @@ export default function OpportunityDrawer({ oppId, role, userId, onClose, onChan
             type: opp.type,
             source_link: opp.source_link ?? '',
             deadline: opp.deadline ?? '',
+            summary: opp.summary ?? '',
             eligibility: opp.eligibility ?? '',
             application_link: opp.application_link ?? '',
             geo_restrictions: opp.geo_restrictions ?? '',
