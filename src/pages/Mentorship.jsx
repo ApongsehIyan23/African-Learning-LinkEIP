@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import { useRealtime } from '../hooks/useRealtime'
 import Button from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
 import Card from '../components/ui/Card'
@@ -56,6 +57,10 @@ export default function Mentorship() {
   useEffect(() => {
     load()
   }, [isMentor, user.id])
+
+  // Live: when staff recommend a match, or the mentee confirms it, this updates
+  // without a refresh.
+  useRealtime(['matches', 'mentor_profiles', 'mentee_profiles'], () => load())
 
   if (loading) return <Spinner label="Loading your mentorship profile…" />
 

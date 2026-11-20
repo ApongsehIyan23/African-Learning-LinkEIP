@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useRealtime } from '../hooks/useRealtime'
 import Button from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
 import Card from '../components/ui/Card'
@@ -66,23 +67,24 @@ export default function Opportunities() {
   const [geo, setGeo] = useState('')
   const [openItem, setOpenItem] = useState(null)
 
-  useEffect(() => {
-    let active = true
-    ;(async () => {
-      try {
-        const data = await listPublishedOpportunities()
-        if (active) setError('')
-        if (active) setItems(data)
-      } catch (err) {
-        if (active) setError(err.message)
-      } finally {
-        if (active) setLoading(false)
-      }
-    })()
-    return () => {
-      active = false
+  const load = useCallback(async () => {
+    try {
+      setItems(await listPublishedOpportunities())
+      setError('')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    load()
+  }, [load])
+
+  // Live: a newly published opportunity appears here without a refresh (RLS keeps
+  // the stream to published rows only).
+  useRealtime(['opportunities'], load)
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()

@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Verification from './pages/Verification'
 import Opportunities from './pages/Opportunities'
+import Dashboard from './pages/Dashboard'
 import Matching from './pages/Matching'
 import Mentorship from './pages/Mentorship'
 import Placeholder from './pages/Placeholder'
@@ -33,10 +34,7 @@ export default function App() {
           path="/dashboard"
           element={
             <RequireRole allow={ROUTE_ACCESS['/dashboard']}>
-              <Placeholder
-                title="Dashboard"
-                description="Staff admin console. Live metrics and queue counters arrive in Phase 5."
-              />
+              <Dashboard />
             </RequireRole>
           }
         />

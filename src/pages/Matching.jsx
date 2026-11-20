@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useRealtime } from '../hooks/useRealtime'
 import Button from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
 import Card from '../components/ui/Card'
@@ -61,6 +62,7 @@ export default function Matching() {
     }
   }
   useEffect(() => { load() }, [])
+  useRealtime(['matches', 'mentor_profiles', 'mentee_profiles'], () => load())
 
   const verifiedMentors = useMemo(() => mentors.filter((m) => m.verified && MENTOR_COMPLETE(m)), [mentors])
 
